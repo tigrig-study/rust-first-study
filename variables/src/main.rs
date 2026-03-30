@@ -1,11 +1,25 @@
+use std::io;
+
 fn main() {
-    let x: u8 = 255;
-    let x1 = x.wrapping_add(1);
-    let x2 = x.checked_add(1);
-    let (x3, b1) = x.overflowing_add(1);
-    let x4 = x.saturating_add(1);
-    println!("wrapping_add 255 + 1 = {x1}");
-    println!("checked_add 255 + 1 = {:?}", x2);
-    println!("overflowing_add 255 + 1 = {x3}, {b1}");
-    println!("saturating_add 255 + 1 = {x4}");
+   let a = [1, 2, 3, 4, 5];
+
+   println!("Please enter an array index.");
+
+   let mut index = String::new();
+
+   io::stdin()
+       .read_line(&mut index)
+       .expect("Failed to read line");
+
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
+
+    let element = a[index];
+
+    println!("The value of the element at index {} is: {}", index, element);
+
+    let _a2: [u32; 5] = [1, 2, 3, 4, 5];
+    let _a3: [u32; 5] = [1; 5];
 }
